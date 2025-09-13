@@ -1,0 +1,31 @@
+{
+  "name": "silksong",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "pkg": "npm run build && pkg dist/bundle.cjs.js --targets node18-win-x64 --output build/silksong-reader"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "aes-js": "^3.1.1",
+    "fs": "^0.0.1-security",
+    "node": "^24.8.0",
+    "path": "^0.12.7",
+    "rollup": "^4.50.1",
+    "webpack": "^5.101.3"
+  },
+  "pkg": {
+    "assets": [
+      "dist/**/*"
+    ]
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  }
+}
