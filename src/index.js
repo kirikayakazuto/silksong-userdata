@@ -8,13 +8,15 @@ import os from 'os'
 const userDir = os.homedir();
 
 // 构造 Hollow Knight Silksong 的存档根目录路径
-const basePath = path.join(
-  userDir,
-  "AppData",
-  "LocalLow",
-  "Team Cherry",
-  "Hollow Knight Silksong"
-);
+let basePath = '';
+if (os.platform == 'win32') {
+  basePath = path.join(userDir, "AppData", "LocalLow", "Team Cherry", "Hollow Knight Silksong");
+}else if(os.platform == 'darwin') {
+  basePath = path.join(userDir, 'Library', 'Application Support', 'unity.Team-Cherry.Silksong');
+}else {
+  console.error("❌ 不支持的操作系统:", os.platform);
+  process.exit(1);
+}
 
 try {
   if (!fs.existsSync(basePath)) {
